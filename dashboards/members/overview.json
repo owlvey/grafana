@@ -1,0 +1,1011 @@
+{
+    "annotations": {
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": "-- Grafana --",
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "type": "dashboard"
+            }
+        ]
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "links": [],
+    "panels": [
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "fixed"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    },
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 4,
+                "x": 0,
+                "y": 0
+            },
+            "id": 32,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "center",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "mean"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.5.1",
+            "targets": [
+                {
+                    "$$hashKey": "object:566",
+                    "aggregation": "Last",
+                    "decimals": 2,
+                    "displayAliasType": "Warning / Critical",
+                    "displayType": "Regular",
+                    "displayValueWithAlias": "Never",
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT  count(*)\nFROM Squads\n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "units": "none",
+                    "valueHandler": "Number Threshold",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Squads",
+            "type": "stat"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "fixed"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    },
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 4,
+                "x": 4,
+                "y": 0
+            },
+            "id": 28,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "center",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "mean"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.5.1",
+            "targets": [
+                {
+                    "$$hashKey": "object:566",
+                    "aggregation": "Last",
+                    "decimals": 2,
+                    "displayAliasType": "Warning / Critical",
+                    "displayType": "Regular",
+                    "displayValueWithAlias": "Never",
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT  count(email) as total\nFROM Members\n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "units": "none",
+                    "valueHandler": "Number Threshold",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                },
+                {
+                    "format": "table",
+                    "group": [],
+                    "hide": false,
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT count(email) as assigned\nFROM Members M join SquadMembers SM on M.id = SM.memberId",
+                    "refId": "B",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "installed_rank"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "flyway_schema_history",
+                    "timeColumn": "installed_on",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Members",
+            "type": "stat"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "fixed"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    },
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 5,
+                "x": 8,
+                "y": 0
+            },
+            "id": 29,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "center",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "mean"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.5.1",
+            "targets": [
+                {
+                    "$$hashKey": "object:566",
+                    "aggregation": "Last",
+                    "decimals": 2,
+                    "displayAliasType": "Warning / Critical",
+                    "displayType": "Regular",
+                    "displayValueWithAlias": "Never",
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT count(*) as total\nFROM Features",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "units": "none",
+                    "valueHandler": "Number Threshold",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                },
+                {
+                    "format": "table",
+                    "group": [],
+                    "hide": false,
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT count(distinct F.id) as assigned\nFROM Features F join FeatureSquads FS on F.id = FS.featureId",
+                    "refId": "B",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "installed_rank"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "flyway_schema_history",
+                    "timeColumn": "installed_on",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Features",
+            "type": "stat"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "short"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 9,
+                "x": 0,
+                "y": 3
+            },
+            "id": 23,
+            "options": {
+                "tiling": "treemapSquarify"
+            },
+            "pluginVersion": "7.5.1",
+            "targets": [
+                {
+                    "$$hashKey": "object:566",
+                    "aggregation": "Last",
+                    "decimals": 2,
+                    "displayAliasType": "Warning / Critical",
+                    "displayType": "Regular",
+                    "displayValueWithAlias": "Never",
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT \n  S.squad,\n  count(SM.memberId) as members\nFROM \nSquads S join SquadMembers SM on S.id = SM.squadId\ngroup by S.squad\norder by members desc\n\n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "units": "none",
+                    "valueHandler": "Number Threshold",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Members per Squad",
+            "type": "marcusolsson-treemap-panel"
+        },
+        {
+            "cacheTimeout": null,
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 15,
+                "x": 9,
+                "y": 3
+            },
+            "id": 22,
+            "interval": null,
+            "links": [],
+            "options": {
+                "tiling": "treemapSquarify"
+            },
+            "pluginVersion": "7.5.1",
+            "targets": [
+                {
+                    "$$hashKey": "object:566",
+                    "aggregation": "Last",
+                    "decimals": 2,
+                    "displayAliasType": "Warning / Critical",
+                    "displayType": "Regular",
+                    "displayValueWithAlias": "Never",
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT \n  F.feature,\n  count(M.id) as members\nFROM \nSquads S \njoin SquadMembers SM on S.id = SM.squadId  \njoin Members M on SM.memberId = M.id \njoin FeatureSquads FS on S.id = FS.squadId\njoin Features F on F.id = FS.featureId\ngroup by F.feature\norder by members desc\n\n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "units": "none",
+                    "valueHandler": "Number Threshold",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Members per feature",
+            "type": "marcusolsson-treemap-panel"
+        },
+        {
+            "cacheTimeout": null,
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 9,
+                "w": 24,
+                "x": 0,
+                "y": 11
+            },
+            "id": 35,
+            "interval": null,
+            "links": [],
+            "options": {
+                "tiling": "treemapSquarify"
+            },
+            "pluginVersion": "7.5.1",
+            "targets": [
+                {
+                    "$$hashKey": "object:566",
+                    "aggregation": "Last",
+                    "decimals": 2,
+                    "displayAliasType": "Warning / Critical",
+                    "displayType": "Regular",
+                    "displayValueWithAlias": "Never",
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT \n  J.journey,\n  count(distinct M.id) as members\nFROM \nSquads S \njoin SquadMembers SM on S.id = SM.squadId  \njoin Members M on SM.memberId = M.id \njoin FeatureSquads FS on S.id = FS.squadId\njoin Features F on F.id = FS.featureId\njoin JourneyFeatures JF on F.id = JF.featureId\njoin Journeys J on J.id  = JF.journeyId\ngroup by J.journey\norder by members desc\n\n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "units": "none",
+                    "valueHandler": "Number Threshold",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Members per Journey",
+            "type": "marcusolsson-treemap-panel"
+        },
+        {
+            "alignNumbersToRightEnabled": true,
+            "columnAliases": [],
+            "columnFiltersEnabled": false,
+            "columnWidthHints": [],
+            "columns": [],
+            "compactRowsEnabled": false,
+            "datasource": null,
+            "datatablePagingType": "simple_numbers",
+            "datatableTheme": "basic_theme",
+            "emptyData": false,
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fontSize": "100%",
+            "gridPos": {
+                "h": 17,
+                "w": 24,
+                "x": 0,
+                "y": 20
+            },
+            "hoverEnabled": true,
+            "id": 31,
+            "infoEnabled": true,
+            "lengthChangeEnabled": true,
+            "orderColumnEnabled": true,
+            "pagingTypes": [
+                {
+                    "$$hashKey": "object:209",
+                    "text": "Page number buttons only",
+                    "value": "numbers"
+                },
+                {
+                    "$$hashKey": "object:210",
+                    "text": "'Previous' and 'Next' buttons only",
+                    "value": "simple"
+                },
+                {
+                    "$$hashKey": "object:211",
+                    "text": "'Previous' and 'Next' buttons, plus page numbers",
+                    "value": "simple_numbers"
+                },
+                {
+                    "$$hashKey": "object:212",
+                    "text": "'First', 'Previous', 'Next' and 'Last' buttons",
+                    "value": "full"
+                },
+                {
+                    "$$hashKey": "object:213",
+                    "text": "'First', 'Previous', 'Next' and 'Last' buttons, plus page numbers",
+                    "value": "full_numbers"
+                },
+                {
+                    "$$hashKey": "object:214",
+                    "text": "'First' and 'Last' buttons, plus page numbers",
+                    "value": "first_last_numbers"
+                }
+            ],
+            "panelHeight": 592,
+            "pluginVersion": "7.5.1",
+            "rowNumbersEnabled": false,
+            "rowsPerPage": 10,
+            "scroll": false,
+            "scrollHeight": "default",
+            "searchEnabled": true,
+            "searchHighlightingEnabled": false,
+            "showCellBorders": false,
+            "showHeader": true,
+            "showRowBorders": true,
+            "sort": {
+                "col": 0,
+                "desc": true
+            },
+            "sortByColumns": [
+                {
+                    "$$hashKey": "object:34",
+                    "columnData": 0,
+                    "sortMethod": "desc"
+                }
+            ],
+            "sortByColumnsData": [
+                [
+                    2,
+                    "asc"
+                ]
+            ],
+            "stripedRowsEnabled": true,
+            "styles": [
+                {
+                    "$$hashKey": "object:36",
+                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                    "pattern": "Time",
+                    "type": "date"
+                },
+                {
+                    "$$hashKey": "object:37",
+                    "colorMode": null,
+                    "colors": [
+                        "rgba(245, 54, 54, 0.9)",
+                        "rgba(237, 129, 40, 0.89)",
+                        "rgba(50, 172, 45, 0.97)"
+                    ],
+                    "decimals": 2,
+                    "pattern": "/.*/",
+                    "splitPattern": "/ /",
+                    "thresholds": [],
+                    "type": "number",
+                    "unit": "short"
+                }
+            ],
+            "targets": [
+                {
+                    "format": "table",
+                    "group": [],
+                    "hide": false,
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT  name, email, S.squad\nFROM Members M left join SquadMembers SM on M.id = SM.memberId left join Squads S on SM.squadId = S.id\n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "themeOptions": {
+                "dark": "./styles/dark.scss",
+                "light": "./styles/light.scss"
+            },
+            "themes": [
+                {
+                    "$$hashKey": "object:184",
+                    "disabled": false,
+                    "text": "Basic",
+                    "value": "basic_theme"
+                },
+                {
+                    "$$hashKey": "object:185",
+                    "disabled": true,
+                    "text": "Bootstrap",
+                    "value": "bootstrap_theme"
+                },
+                {
+                    "$$hashKey": "object:186",
+                    "disabled": true,
+                    "text": "Foundation",
+                    "value": "foundation_theme"
+                },
+                {
+                    "$$hashKey": "object:187",
+                    "disabled": true,
+                    "text": "ThemeRoller",
+                    "value": "themeroller_theme"
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Members List",
+            "transform": "table",
+            "type": "briangann-datatable-panel"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": null,
+                        "filterable": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "source"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 1031
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "lat slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 136
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "exp debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 144
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "ava debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 122
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "exp slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 132
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "ava slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 134
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "lat debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 124
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 12,
+                "w": 24,
+                "x": 0,
+                "y": 37
+            },
+            "id": 18,
+            "options": {
+                "showHeader": true,
+                "sortBy": [
+                    {
+                        "desc": true,
+                        "displayName": "ava debt"
+                    }
+                ]
+            },
+            "pluginVersion": "7.5.1",
+            "targets": [
+                {
+                    "format": "table",
+                    "group": [],
+                    "hide": false,
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT  squad, \n        max(avaSlo) as 'ava slo',\n        ifnull(AVG(NULLIF(ava_debt ,0)),0) as 'ava debt',\n        max(expSlo) as 'exp slo',\n        ifnull(AVG(NULLIF(exp_debt ,0)),0) as 'exp debt',\n        max(latSlo) as 'lat slo',\n        ifnull(AVG(NULLIF(lat_debt ,0)),0) as 'lat debt'\nFROM HourlySquad\nWHERE $__timeFilter(start) \nGroup by squad",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Squads List",
+            "type": "table"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": null,
+                        "filterable": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 12,
+                "w": 24,
+                "x": 0,
+                "y": 49
+            },
+            "id": 33,
+            "options": {
+                "showHeader": true,
+                "sortBy": [
+                    {
+                        "desc": false,
+                        "displayName": "squad"
+                    }
+                ]
+            },
+            "pluginVersion": "7.5.1",
+            "targets": [
+                {
+                    "format": "table",
+                    "group": [],
+                    "hide": false,
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT  F.feature, S.squad\nfrom Features F left join FeatureSquads FS on F.id = FS.featureId left join Squads S on FS.squadId = S.id",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Feature List",
+            "type": "table"
+        }
+    ],
+    "refresh": false,
+    "schemaVersion": 27,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+        "list": []
+    },
+    "time": {
+        "from": "now-2d",
+        "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Members Overview",
+    "version": 1
+}

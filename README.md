@@ -1,2 +1,2 @@
 # grafana
-grafana
+grafana dashboard
