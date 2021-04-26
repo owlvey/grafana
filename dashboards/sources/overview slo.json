@@ -1,2214 +1,2212 @@
 {
     "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": "-- Grafana --",
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "type": "dashboard"
-        }
-      ]
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": "-- Grafana --",
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "type": "dashboard"
+            }
+        ]
     },
     "editable": true,
     "gnetId": null,
     "graphTooltip": 0,
-    "id": 24,
     "links": [],
     "panels": [
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "#EAB839",
+                                "value": 0
+                            }
+                        ]
+                    },
+                    "unit": "percentunit"
+                },
+                "overrides": []
             },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
+            "gridPos": {
+                "h": 3,
+                "w": 8,
+                "x": 0,
+                "y": 0
+            },
+            "id": 32,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "center",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
                 {
-                  "color": "green",
-                  "value": null
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  avg(ava_debt)   as 'debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) and ava_debt > 0 \n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Availability Debt Average",
+            "type": "stat"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "#EAB839",
+                                "value": 0
+                            }
+                        ]
+                    },
+                    "unit": "percentunit"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 8,
+                "x": 8,
+                "y": 0
+            },
+            "id": 33,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "center",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
+                {
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  avg(exp_debt)  as 'debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) and exp_debt > 0 \n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Experience Debt Average",
+            "type": "stat"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "#EAB839",
+                                "value": 0
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 8,
+                "x": 16,
+                "y": 0
+            },
+            "id": 34,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "center",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
+                {
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  avg(lat_debt)  as 'debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) and lat_debt > 0 \n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Availability Debt Average",
+            "type": "stat"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 8,
+                "x": 0,
+                "y": 3
+            },
+            "id": 28,
+            "options": {
+                "colorMode": "background",
+                "graphMode": "none",
+                "justifyMode": "center",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "count"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
+                {
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT 1 as 'debt'\nFROM MonthlySource\nWHERE $__timeFilter(start) \ngroup by source\nhaving sum(ava_debt) > 0\n\n  \n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
                 },
                 {
-                  "color": "#EAB839",
-                  "value": 0
+                    "format": "table",
+                    "group": [],
+                    "hide": false,
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT 1 as 'no debt'\nFROM MonthlySource\nWHERE $__timeFilter(start) \ngroup by source\nhaving sum(ava_debt) = 0\n",
+                    "refId": "B",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
                 }
-              ]
-            },
-            "unit": "percentunit"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 8,
-          "x": 0,
-          "y": 0
-        },
-        "id": 32,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "center",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
             ],
-            "fields": "",
-            "values": false
-          },
-          "text": {},
-          "textMode": "auto"
+            "title": "Availability debt group count",
+            "type": "stat"
         },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "format": "table",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  avg(ava_debt)   as 'debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) and ava_debt > 0 \n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Availability Debt Average",
-        "type": "stat"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
             },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
+            "gridPos": {
+                "h": 3,
+                "w": 8,
+                "x": 8,
+                "y": 3
+            },
+            "id": 29,
+            "options": {
+                "colorMode": "background",
+                "graphMode": "none",
+                "justifyMode": "center",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "count"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
                 {
-                  "color": "green",
-                  "value": null
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT 1 as 'debt'\nFROM MonthlySource\nWHERE $__timeFilter(start) \ngroup by source\nhaving sum(exp_debt) > 0\n\n  \n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
                 },
                 {
-                  "color": "#EAB839",
-                  "value": 0
+                    "format": "table",
+                    "group": [],
+                    "hide": false,
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT 1 as 'no debt'\nFROM MonthlySource\nWHERE $__timeFilter(start) \ngroup by source\nhaving sum(exp_debt) = 0\n",
+                    "refId": "B",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
                 }
-              ]
-            },
-            "unit": "percentunit"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 8,
-          "x": 8,
-          "y": 0
-        },
-        "id": 33,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "center",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
             ],
-            "fields": "",
-            "values": false
-          },
-          "text": {},
-          "textMode": "auto"
+            "title": "Availability debt count",
+            "type": "stat"
         },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "format": "table",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  avg(exp_debt)  as 'debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) and exp_debt > 0 \n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Experience Debt Average",
-        "type": "stat"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
             },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
+            "gridPos": {
+                "h": 3,
+                "w": 8,
+                "x": 16,
+                "y": 3
+            },
+            "id": 30,
+            "options": {
+                "colorMode": "background",
+                "graphMode": "none",
+                "justifyMode": "center",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "count"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
                 {
-                  "color": "green",
-                  "value": null
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT 1 as 'debt'\nFROM MonthlySource\nWHERE $__timeFilter(start) \ngroup by source\nhaving sum(lat_debt) > 0\n\n  \n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
                 },
                 {
-                  "color": "#EAB839",
-                  "value": 0
+                    "format": "table",
+                    "group": [],
+                    "hide": false,
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT 1 as 'no debt'\nFROM MonthlySource\nWHERE $__timeFilter(start) \ngroup by source\nhaving sum(lat_debt) = 0\n",
+                    "refId": "B",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
                 }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 8,
-          "x": 16,
-          "y": 0
-        },
-        "id": 34,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "center",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
             ],
-            "fields": "",
-            "values": false
-          },
-          "text": {},
-          "textMode": "auto"
+            "title": "Availability debt count",
+            "type": "stat"
         },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "format": "table",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  avg(lat_debt)  as 'debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) and lat_debt > 0 \n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Availability Debt Average",
-        "type": "stat"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 8,
-          "x": 0,
-          "y": 3
-        },
-        "id": 28,
-        "options": {
-          "colorMode": "background",
-          "graphMode": "none",
-          "justifyMode": "center",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "count"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "text": {},
-          "textMode": "auto"
-        },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "format": "table",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT 1 as 'debt'\nFROM MonthlySource\nWHERE $__timeFilter(start) \ngroup by source\nhaving sum(ava_debt) > 0\n\n  \n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          },
-          {
-            "format": "table",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT 1 as 'no debt'\nFROM MonthlySource\nWHERE $__timeFilter(start) \ngroup by source\nhaving sum(ava_debt) = 0\n",
-            "refId": "B",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Availability debt group count",
-        "type": "stat"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 8,
-          "x": 8,
-          "y": 3
-        },
-        "id": 29,
-        "options": {
-          "colorMode": "background",
-          "graphMode": "none",
-          "justifyMode": "center",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "count"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "text": {},
-          "textMode": "auto"
-        },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "format": "table",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT 1 as 'debt'\nFROM MonthlySource\nWHERE $__timeFilter(start) \ngroup by source\nhaving sum(exp_debt) > 0\n\n  \n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          },
-          {
-            "format": "table",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT 1 as 'no debt'\nFROM MonthlySource\nWHERE $__timeFilter(start) \ngroup by source\nhaving sum(exp_debt) = 0\n",
-            "refId": "B",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Availability debt count",
-        "type": "stat"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 8,
-          "x": 16,
-          "y": 3
-        },
-        "id": 30,
-        "options": {
-          "colorMode": "background",
-          "graphMode": "none",
-          "justifyMode": "center",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "count"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "text": {},
-          "textMode": "auto"
-        },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "format": "table",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT 1 as 'debt'\nFROM MonthlySource\nWHERE $__timeFilter(start) \ngroup by source\nhaving sum(lat_debt) > 0\n\n  \n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          },
-          {
-            "format": "table",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT 1 as 'no debt'\nFROM MonthlySource\nWHERE $__timeFilter(start) \ngroup by source\nhaving sum(lat_debt) = 0\n",
-            "refId": "B",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Availability debt count",
-        "type": "stat"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-YlRd"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 8,
-          "x": 0,
-          "y": 6
-        },
-        "id": 23,
-        "options": {
-          "tiling": "treemapSquarify"
-        },
-        "pluginVersion": "7.5.2",
-        "targets": [
-          {
-            "$$hashKey": "object:566",
-            "aggregation": "Last",
-            "decimals": 2,
-            "displayAliasType": "Warning / Critical",
-            "displayType": "Regular",
-            "displayValueWithAlias": "Never",
-            "format": "table",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  source, \n  avg(ava_debt) as 'debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) and ava_debt > 0 \ngroup by source",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "units": "none",
-            "valueHandler": "Number Threshold",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Availability Debt Map",
-        "type": "marcusolsson-treemap-panel"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-YlRd"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "continuous-YlRd"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    },
+                    "unit": "none"
                 },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 8,
-          "x": 8,
-          "y": 6
-        },
-        "id": 21,
-        "options": {
-          "tiling": "treemapSquarify"
-        },
-        "pluginVersion": "7.5.2",
-        "targets": [
-          {
-            "$$hashKey": "object:566",
-            "aggregation": "Last",
-            "decimals": 2,
-            "displayAliasType": "Warning / Critical",
-            "displayType": "Regular",
-            "displayValueWithAlias": "Never",
-            "format": "table",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  source, \n  avg(exp_debt) as 'debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) and exp_debt > 0 \ngroup by source",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "units": "none",
-            "valueHandler": "Number Threshold",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Experience Debt Map",
-        "type": "marcusolsson-treemap-panel"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-YlRd"
+                "overrides": []
             },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
+            "gridPos": {
+                "h": 5,
+                "w": 8,
+                "x": 0,
+                "y": 6
+            },
+            "id": 23,
+            "options": {
+                "tiling": "treemapSquarify"
+            },
+            "pluginVersion": "7.5.2",
+            "targets": [
                 {
-                  "color": "green",
-                  "value": null
+                    "$$hashKey": "object:566",
+                    "aggregation": "Last",
+                    "decimals": 2,
+                    "displayAliasType": "Warning / Critical",
+                    "displayType": "Regular",
+                    "displayValueWithAlias": "Never",
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  source, \n  avg(ava_debt) as 'debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) and ava_debt > 0 \ngroup by source",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "units": "none",
+                    "valueHandler": "Number Threshold",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Availability Debt Map",
+            "type": "marcusolsson-treemap-panel"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "continuous-YlRd"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
                 },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 8,
+                "x": 8,
+                "y": 6
+            },
+            "id": 21,
+            "options": {
+                "tiling": "treemapSquarify"
+            },
+            "pluginVersion": "7.5.2",
+            "targets": [
                 {
-                  "color": "red",
-                  "value": 80
+                    "$$hashKey": "object:566",
+                    "aggregation": "Last",
+                    "decimals": 2,
+                    "displayAliasType": "Warning / Critical",
+                    "displayType": "Regular",
+                    "displayValueWithAlias": "Never",
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  source, \n  avg(exp_debt) as 'debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) and exp_debt > 0 \ngroup by source",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "units": "none",
+                    "valueHandler": "Number Threshold",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
                 }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 8,
-          "x": 16,
-          "y": 6
-        },
-        "id": 22,
-        "options": {
-          "tiling": "treemapSquarify"
-        },
-        "pluginVersion": "7.5.2",
-        "targets": [
-          {
-            "$$hashKey": "object:566",
-            "aggregation": "Last",
-            "decimals": 2,
-            "displayAliasType": "Warning / Critical",
-            "displayType": "Regular",
-            "displayValueWithAlias": "Never",
-            "format": "table",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  source, \n  avg(lat_debt) as 'debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) and lat_debt > 0 \ngroup by source",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
             ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "units": "none",
-            "valueHandler": "Number Threshold",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Latency Debt Map",
-        "type": "marcusolsson-treemap-panel"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "bars",
-              "fillOpacity": 10,
-              "gradientMode": "none",
-              "hideFrom": {
-                "graph": false,
-                "legend": false,
-                "tooltip": false
-              },
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "never",
-              "spanNulls": true
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
+            "title": "Experience Debt Map",
+            "type": "marcusolsson-treemap-panel"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "continuous-YlRd"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
                 },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
+                "overrides": []
             },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 24,
-          "x": 0,
-          "y": 11
-        },
-        "id": 4,
-        "options": {
-          "graph": {},
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom"
-          },
-          "tooltipOptions": {
-            "mode": "multi"
-          }
-        },
-        "pluginVersion": "7.5.2",
-        "targets": [
-          {
-            "format": "time_series",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  Date(start) AS \"time\",\n  source,\n  avg(nullif(ava_debt, 0)) as 'availability debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) \ngroup by start, source\n\n\n",
-            "refId": "A",
-            "select": [
-              [
+            "gridPos": {
+                "h": 5,
+                "w": 8,
+                "x": 16,
+                "y": 6
+            },
+            "id": 22,
+            "options": {
+                "tiling": "treemapSquarify"
+            },
+            "pluginVersion": "7.5.2",
+            "targets": [
                 {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
+                    "$$hashKey": "object:566",
+                    "aggregation": "Last",
+                    "decimals": 2,
+                    "displayAliasType": "Warning / Critical",
+                    "displayType": "Regular",
+                    "displayValueWithAlias": "Never",
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  source, \n  avg(lat_debt) as 'debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) and lat_debt > 0 \ngroup by source",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "units": "none",
+                    "valueHandler": "Number Threshold",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
                 }
-              ]
             ],
-            "table": "HourlySource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Availability Debt",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "bars",
-              "fillOpacity": 10,
-              "gradientMode": "none",
-              "hideFrom": {
-                "graph": false,
-                "legend": false,
-                "tooltip": false
-              },
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "never",
-              "spanNulls": true
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
+            "title": "Latency Debt Map",
+            "type": "marcusolsson-treemap-panel"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "bars",
+                        "fillOpacity": 10,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "graph": false,
+                            "legend": false,
+                            "tooltip": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "never",
+                        "spanNulls": true
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "none"
                 },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
+                "overrides": []
             },
-            "unit": "short"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "CSF"
-              },
-              "properties": [
-                {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "green",
-                    "mode": "fixed"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 7,
-          "w": 24,
-          "x": 0,
-          "y": 20
-        },
-        "id": 35,
-        "options": {
-          "graph": {},
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom"
-          },
-          "tooltipOptions": {
-            "mode": "multi"
-          }
-        },
-        "pluginVersion": "7.5.1",
-        "targets": [
-          {
-            "format": "time_series",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  start AS \"time\",\n  source,\n  ifnull(avg(nullif(exp_debt, 0)), 0) as 'experience debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) \ngroup by start, source\n\n\n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "HourlySource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Experience Debt",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
+            "gridPos": {
+                "h": 9,
+                "w": 24,
+                "x": 0,
+                "y": 11
             },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "bars",
-              "fillOpacity": 10,
-              "gradientMode": "none",
-              "hideFrom": {
-                "graph": false,
-                "legend": false,
-                "tooltip": false
-              },
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "never",
-              "spanNulls": true
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
+            "id": 4,
+            "options": {
+                "graph": {},
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom"
                 },
-                {
-                  "color": "red",
-                  "value": 80
+                "tooltipOptions": {
+                    "mode": "multi"
                 }
-              ]
             },
-            "unit": "short"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "CSF"
-              },
-              "properties": [
+            "pluginVersion": "7.5.2",
+            "targets": [
                 {
-                  "id": "color",
-                  "value": {
-                    "fixedColor": "green",
-                    "mode": "fixed"
-                  }
+                    "format": "time_series",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  Date(start) AS \"time\",\n  source,\n  avg(nullif(ava_debt, 0)) as 'availability debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) \ngroup by start, source\n\n\n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "HourlySource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
                 }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 7,
-          "w": 24,
-          "x": 0,
-          "y": 27
-        },
-        "id": 38,
-        "options": {
-          "graph": {},
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom"
-          },
-          "tooltipOptions": {
-            "mode": "multi"
-          }
-        },
-        "pluginVersion": "7.5.1",
-        "targets": [
-          {
-            "format": "time_series",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  start AS \"time\",\n  source,\n  ifnull(avg(nullif(lat_debt, 0)),0) as 'latency debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) \ngroup by start, source\n\n\n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
             ],
-            "table": "HourlySource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Latecny Debt",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "custom": {
-              "align": null,
-              "displayMode": "color-background",
-              "filterable": false
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Availability Debt",
+            "type": "timeseries"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "bars",
+                        "fillOpacity": 10,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "graph": false,
+                            "legend": false,
+                            "tooltip": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "never",
+                        "spanNulls": true
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "short"
                 },
-                {
-                  "color": "red",
-                  "value": 0.00001
-                }
-              ]
-            }
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "source"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 755
-                }
-              ]
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "CSF"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "green",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "lat slo"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 136
-                }
-              ]
+            "gridPos": {
+                "h": 7,
+                "w": 24,
+                "x": 0,
+                "y": 20
             },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "exp debt"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 144
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "ava debt"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 122
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "exp slo"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 132
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "ava slo"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 134
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "lat debt"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 124
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "family"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 558
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-01"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 96
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-02"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 85
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-03"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 84
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-04"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 89
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-05"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 90
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-06"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 84
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-07"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 92
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-08"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 91
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-09"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 86
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-10"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 76
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-11"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 81
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-12"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 91
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2021-01"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 91
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2021-02"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 96
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2021-03"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 97
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 10,
-          "w": 24,
-          "x": 0,
-          "y": 34
-        },
-        "id": 37,
-        "options": {
-          "showHeader": true,
-          "sortBy": []
-        },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "format": "table",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT  *\nFROM MonthlyAvaDebtSourcePivot\n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Availability Debt By Month",
-        "type": "table"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "custom": {
-              "align": null,
-              "displayMode": "color-background",
-              "filterable": false
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
+            "id": 35,
+            "options": {
+                "graph": {},
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom"
                 },
-                {
-                  "color": "red",
-                  "value": 0.00001
+                "tooltipOptions": {
+                    "mode": "multi"
                 }
-              ]
-            }
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "source"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 756
-                }
-              ]
             },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "lat slo"
-              },
-              "properties": [
+            "pluginVersion": "7.5.1",
+            "targets": [
                 {
-                  "id": "custom.width",
-                  "value": 136
+                    "format": "time_series",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  start AS \"time\",\n  source,\n  ifnull(avg(nullif(exp_debt, 0)), 0) as 'experience debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) \ngroup by start, source\n\n\n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "HourlySource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
                 }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "exp debt"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 144
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "ava debt"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 122
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "exp slo"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 132
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "ava slo"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 134
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "lat debt"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 124
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "family"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 553
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-01"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 96
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-02"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 85
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-03"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 84
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-04"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 89
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-05"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 90
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-06"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 84
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-07"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 92
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-08"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 91
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-09"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 86
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-10"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 76
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-11"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 81
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-12"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 91
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2021-01"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 91
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2021-02"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 96
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2021-03"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 97
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 10,
-          "w": 24,
-          "x": 0,
-          "y": 44
-        },
-        "id": 39,
-        "options": {
-          "showHeader": true,
-          "sortBy": []
-        },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "format": "table",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT  *\nFROM MonthlyExpDebtSourcePivot\n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
             ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Experience Debt By Month",
-        "type": "table"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "custom": {
-              "align": null,
-              "displayMode": "color-background",
-              "filterable": false
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Experience Debt",
+            "type": "timeseries"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "bars",
+                        "fillOpacity": 10,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "graph": false,
+                            "legend": false,
+                            "tooltip": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "never",
+                        "spanNulls": true
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "short"
                 },
-                {
-                  "color": "red",
-                  "value": 0.00001
-                }
-              ]
-            }
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "source"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 304
-                }
-              ]
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "CSF"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "green",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "lat slo"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 136
-                }
-              ]
+            "gridPos": {
+                "h": 7,
+                "w": 24,
+                "x": 0,
+                "y": 27
             },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "exp debt"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 144
+            "id": 38,
+            "options": {
+                "graph": {},
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom"
+                },
+                "tooltipOptions": {
+                    "mode": "multi"
                 }
-              ]
             },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "ava debt"
-              },
-              "properties": [
+            "pluginVersion": "7.5.1",
+            "targets": [
                 {
-                  "id": "custom.width",
-                  "value": 122
+                    "format": "time_series",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  start AS \"time\",\n  source,\n  ifnull(avg(nullif(lat_debt, 0)),0) as 'latency debt'\nFROM MonthlySource\nWHERE\n  $__timeFilter(start) \ngroup by start, source\n\n\n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "HourlySource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
                 }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "exp slo"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 132
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "ava slo"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 134
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "lat debt"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 124
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "family"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 552
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-01"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 96
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-02"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 85
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-03"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 84
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-04"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 89
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-05"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 90
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-06"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 84
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-07"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 92
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-08"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 91
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-09"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 86
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-10"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 76
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-11"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 81
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2020-12"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 91
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2021-01"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 91
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2021-02"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 96
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "2021-03"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 97
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 10,
-          "w": 24,
-          "x": 0,
-          "y": 54
-        },
-        "id": 40,
-        "options": {
-          "showHeader": true,
-          "sortBy": []
-        },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "format": "table",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT  *\nFROM MonthlyLatDebtSourcePivot\n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
             ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Latency Debt By Month",
-        "type": "table"
-      }
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Latecny Debt",
+            "type": "timeseries"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": null,
+                        "displayMode": "color-background",
+                        "filterable": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 1e-05
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "source"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 755
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "lat slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 136
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "exp debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 144
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "ava debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 122
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "exp slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 132
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "ava slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 134
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "lat debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 124
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "family"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 558
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-01"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 96
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-02"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 85
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-03"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 84
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-04"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 89
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-05"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 90
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-06"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 84
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-07"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 92
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-08"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 91
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-09"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 86
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-10"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 76
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-11"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 81
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-12"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 91
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2021-01"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 91
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2021-02"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 96
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2021-03"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 97
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 10,
+                "w": 24,
+                "x": 0,
+                "y": 34
+            },
+            "id": 37,
+            "options": {
+                "showHeader": true,
+                "sortBy": []
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
+                {
+                    "format": "table",
+                    "group": [],
+                    "hide": false,
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT  *\nFROM MonthlyAvaDebtSourcePivot\n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Availability Debt By Month",
+            "type": "table"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": null,
+                        "displayMode": "color-background",
+                        "filterable": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 1e-05
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "source"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 756
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "lat slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 136
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "exp debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 144
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "ava debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 122
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "exp slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 132
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "ava slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 134
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "lat debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 124
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "family"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 553
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-01"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 96
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-02"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 85
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-03"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 84
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-04"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 89
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-05"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 90
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-06"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 84
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-07"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 92
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-08"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 91
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-09"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 86
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-10"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 76
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-11"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 81
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-12"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 91
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2021-01"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 91
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2021-02"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 96
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2021-03"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 97
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 10,
+                "w": 24,
+                "x": 0,
+                "y": 44
+            },
+            "id": 39,
+            "options": {
+                "showHeader": true,
+                "sortBy": []
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
+                {
+                    "format": "table",
+                    "group": [],
+                    "hide": false,
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT  *\nFROM MonthlyExpDebtSourcePivot\n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Experience Debt By Month",
+            "type": "table"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": null,
+                        "displayMode": "color-background",
+                        "filterable": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 1e-05
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "source"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 304
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "lat slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 136
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "exp debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 144
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "ava debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 122
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "exp slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 132
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "ava slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 134
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "lat debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 124
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "family"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 552
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-01"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 96
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-02"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 85
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-03"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 84
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-04"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 89
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-05"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 90
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-06"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 84
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-07"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 92
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-08"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 91
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-09"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 86
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-10"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 76
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-11"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 81
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2020-12"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 91
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2021-01"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 91
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2021-02"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 96
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "2021-03"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 97
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 10,
+                "w": 24,
+                "x": 0,
+                "y": 54
+            },
+            "id": 40,
+            "options": {
+                "showHeader": true,
+                "sortBy": []
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
+                {
+                    "format": "table",
+                    "group": [],
+                    "hide": false,
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT  *\nFROM MonthlyLatDebtSourcePivot\n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Latency Debt By Month",
+            "type": "table"
+        }
     ],
     "refresh": false,
     "schemaVersion": 27,
     "style": "dark",
     "tags": [],
     "templating": {
-      "list": []
+        "list": []
     },
     "time": {
-      "from": "now-2y",
-      "to": "now"
+        "from": "now-2y",
+        "to": "now"
     },
     "timepicker": {},
     "timezone": "",
     "title": "Sources Monthly SLO",
-    "uid": "GXz-ZV9Mk",
-    "version": 2
-  }
+    "version": 1
+}

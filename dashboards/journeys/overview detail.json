@@ -1,1940 +1,1938 @@
 {
     "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": "-- Grafana --",
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "type": "dashboard"
-        }
-      ]
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": "-- Grafana --",
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "type": "dashboard"
+            }
+        ]
     },
     "editable": true,
     "gnetId": null,
     "graphTooltip": 0,
-    "id": 16,
     "iteration": 1619364262441,
     "links": [],
     "panels": [
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": null,
+                        "filterable": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "source"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 1031
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "lat slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 136
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "exp debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 144
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "ava debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 122
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "exp slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 132
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "ava slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 134
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "lat debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 124
+                            }
+                        ]
+                    }
+                ]
             },
-            "custom": {
-              "align": null,
-              "filterable": false
+            "gridPos": {
+                "h": 9,
+                "w": 24,
+                "x": 0,
+                "y": 0
             },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
+            "id": 18,
+            "options": {
+                "showHeader": true,
+                "sortBy": [
+                    {
+                        "desc": true,
+                        "displayName": "ava debt"
+                    }
+                ]
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
                 {
-                  "color": "green",
-                  "value": null
+                    "format": "table",
+                    "group": [],
+                    "hide": false,
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT  journey, \n        max(avaSlo) as 'ava slo',\n        ifnull(AVG(NULLIF(ava_debt ,0)),0) as 'ava debt',\n        max(expSlo) as 'exp slo',\n        ifnull(AVG(NULLIF(exp_debt ,0)),0) as 'exp debt',\n        max(latSlo) as 'lat slo',\n        ifnull(AVG(NULLIF(lat_debt ,0)),0) as 'lat debt'\nFROM HourlyJourney\nWHERE\n$__timeFilter(start) \nGroup by journey",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Journey List",
+            "type": "table"
+        },
+        {
+            "datasource": "-- Grafana --",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 24,
+                "x": 0,
+                "y": 9
+            },
+            "id": 34,
+            "options": {
+                "content": "# $journey\n\n\n         ",
+                "mode": "markdown"
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
+                {
+                    "queryType": "randomWalk",
+                    "refId": "A"
+                }
+            ],
+            "type": "text"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": null,
+                        "filterable": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 24,
+                "x": 0,
+                "y": 12
+            },
+            "id": 38,
+            "options": {
+                "showHeader": true
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
+                {
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT name, email\nFROM \n  Journeys J join JourneyLeaders JL on J.id = JL.journeyId \n  join Members M on JL.memberId = M.id\nwhere J.journey = '$journey'\n\n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "installed_rank"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "flyway_schema_history",
+                    "timeColumn": "installed_on",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Leaders",
+            "type": "table"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": null,
+                        "filterable": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "source"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 1031
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "lat slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 136
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "exp debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 144
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "ava debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 122
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "exp slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 132
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "ava slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 134
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "lat debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 124
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 9,
+                "w": 24,
+                "x": 0,
+                "y": 17
+            },
+            "id": 32,
+            "options": {
+                "showHeader": true,
+                "sortBy": [
+                    {
+                        "desc": true,
+                        "displayName": "exp debt"
+                    }
+                ]
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
+                {
+                    "format": "table",
+                    "group": [],
+                    "hide": false,
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT  feature, \n        max(avaSlo) as 'ava slo',\n        ifnull(AVG(NULLIF(ava_debt ,0)),0) as 'ava debt',\n        max(expSlo) as 'exp slo',\n        ifnull(AVG(NULLIF(exp_debt ,0)),0) as 'exp debt',\n        max(latSlo) as 'lat slo',\n        ifnull(AVG(NULLIF(lat_debt ,0)),0) as 'lat debt'\nFROM HourlyJourney\nWHERE\n$__timeFilter(start)  and journey='$journey'\nGroup by feature",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "$journey detail",
+            "type": "table"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "#EAB839",
+                                "value": 0
+                            }
+                        ]
+                    },
+                    "unit": "percentunit"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 9,
+                "x": 0,
+                "y": 26
+            },
+            "id": 20,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "center",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
+                {
+                    "$$hashKey": "object:566",
+                    "aggregation": "Last",
+                    "decimals": 2,
+                    "displayAliasType": "Warning / Critical",
+                    "displayType": "Regular",
+                    "displayValueWithAlias": "Never",
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  ifnull(avg(nullif(ava_debt,0)),0)  as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start)   and journey = '$journey'\n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "units": "none",
+                    "valueHandler": "Number Threshold",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Availability Avg Debt",
+            "type": "stat"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "#EAB839",
+                                "value": 0
+                            }
+                        ]
+                    },
+                    "unit": "percentunit"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 7,
+                "x": 9,
+                "y": 26
+            },
+            "id": 24,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "center",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
+                {
+                    "$$hashKey": "object:566",
+                    "aggregation": "Last",
+                    "decimals": 2,
+                    "displayAliasType": "Warning / Critical",
+                    "displayType": "Regular",
+                    "displayValueWithAlias": "Never",
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  avg(exp_debt)  as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and exp_debt > 0  and journey = '$journey'\n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "units": "none",
+                    "valueHandler": "Number Threshold",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Experience Avg Debt",
+            "type": "stat"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "#EAB839",
+                                "value": 0
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 8,
+                "x": 16,
+                "y": 26
+            },
+            "id": 25,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "center",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
+                {
+                    "$$hashKey": "object:566",
+                    "aggregation": "Last",
+                    "decimals": 2,
+                    "displayAliasType": "Warning / Critical",
+                    "displayType": "Regular",
+                    "displayValueWithAlias": "Never",
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  avg(lat_debt) as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey' and lat_debt > 0\n",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "units": "none",
+                    "valueHandler": "Number Threshold",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Latency Avg Debt",
+            "type": "stat"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "continuous-YlRd"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 9,
+                "x": 0,
+                "y": 29
+            },
+            "id": 27,
+            "options": {
+                "tiling": "treemapSquarify"
+            },
+            "pluginVersion": "7.5.2",
+            "targets": [
+                {
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  feature, \n  avg(ava_debt) as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey'\ngroup by feature",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Availability Debt Map",
+            "type": "marcusolsson-treemap-panel"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "continuous-YlRd"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 7,
+                "x": 9,
+                "y": 29
+            },
+            "id": 28,
+            "options": {
+                "tiling": "treemapSquarify"
+            },
+            "pluginVersion": "7.5.2",
+            "targets": [
+                {
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  feature, \n  avg(exp_debt) as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey'\ngroup by feature",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Experience Debt Map",
+            "type": "marcusolsson-treemap-panel"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "continuous-YlRd"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 8,
+                "x": 16,
+                "y": 29
+            },
+            "id": 29,
+            "options": {
+                "tiling": "treemapSquarify"
+            },
+            "pluginVersion": "7.5.2",
+            "targets": [
+                {
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  feature, \n  avg(lat_debt) as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey'\ngroup by feature",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Latency Debt Map",
+            "type": "marcusolsson-treemap-panel"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 37
+            },
+            "hiddenSeries": false,
+            "id": 10,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.4",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "format": "time_series",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  start AS \"time\",\n  feature,\n  sum(total) as 'request'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey'\ngroup by feature, start\nORDER BY start",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "HourlySource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Requests",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:706",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
                 },
                 {
-                  "color": "red",
-                  "value": 80
+                    "$$hashKey": "object:707",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
                 }
-              ]
-            }
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "source"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 1031
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "lat slo"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 136
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "exp debt"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 144
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "ava debt"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 122
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "exp slo"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 132
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "ava slo"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 134
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "lat debt"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 124
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 24,
-          "x": 0,
-          "y": 0
-        },
-        "id": 18,
-        "options": {
-          "showHeader": true,
-          "sortBy": [
-            {
-              "desc": true,
-              "displayName": "ava debt"
-            }
-          ]
-        },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "format": "table",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT  journey, \n        max(avaSlo) as 'ava slo',\n        ifnull(AVG(NULLIF(ava_debt ,0)),0) as 'ava debt',\n        max(expSlo) as 'exp slo',\n        ifnull(AVG(NULLIF(exp_debt ,0)),0) as 'exp debt',\n        max(latSlo) as 'lat slo',\n        ifnull(AVG(NULLIF(lat_debt ,0)),0) as 'lat debt'\nFROM HourlyJourney\nWHERE\n$__timeFilter(start) \nGroup by journey",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
             ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Journey List",
-        "type": "table"
-      },
-      {
-        "datasource": "-- Grafana --",
-        "fieldConfig": {
-          "defaults": {},
-          "overrides": []
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
         },
-        "gridPos": {
-          "h": 3,
-          "w": 24,
-          "x": 0,
-          "y": 9
-        },
-        "id": 34,
-        "options": {
-          "content": "# $journey\n\n\n         ",
-          "mode": "markdown"
-        },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "queryType": "randomWalk",
-            "refId": "A"
-          }
-        ],
-        "type": "text"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
             },
-            "custom": {
-              "align": null,
-              "filterable": false
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 37
             },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
+            "hiddenSeries": false,
+            "id": 11,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.5.4",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
                 {
-                  "color": "green",
-                  "value": null
+                    "format": "time_series",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  start AS \"time\",\n  feature,\n  avg(lat) as 'latency ms'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey'\ngroup by start, feature\nORDER BY start",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "HourlySource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Latency",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:706",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
                 },
                 {
-                  "color": "red",
-                  "value": 80
+                    "$$hashKey": "object:707",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
                 }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 24,
-          "x": 0,
-          "y": 12
-        },
-        "id": 38,
-        "options": {
-          "showHeader": true
-        },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "format": "table",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT name, email\nFROM \n  Journeys J join JourneyLeaders JL on J.id = JL.journeyId \n  join Members M on JL.memberId = M.id\nwhere J.journey = '$journey'\n\n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "installed_rank"
-                  ],
-                  "type": "column"
-                }
-              ]
             ],
-            "table": "flyway_schema_history",
-            "timeColumn": "installed_on",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Leaders",
-        "type": "table"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "custom": {
-              "align": null,
-              "filterable": false
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 10,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "graph": false,
+                            "legend": false,
+                            "tooltip": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "always",
+                        "spanNulls": true
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "short"
                 },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "source"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 1031
-                }
-              ]
+                "overrides": []
             },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "lat slo"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 136
-                }
-              ]
+            "gridPos": {
+                "h": 7,
+                "w": 24,
+                "x": 0,
+                "y": 45
             },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "exp debt"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 144
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "ava debt"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 122
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "exp slo"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 132
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "ava slo"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 134
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "lat debt"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 124
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 24,
-          "x": 0,
-          "y": 17
-        },
-        "id": 32,
-        "options": {
-          "showHeader": true,
-          "sortBy": [
-            {
-              "desc": true,
-              "displayName": "exp debt"
-            }
-          ]
-        },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "format": "table",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT  feature, \n        max(avaSlo) as 'ava slo',\n        ifnull(AVG(NULLIF(ava_debt ,0)),0) as 'ava debt',\n        max(expSlo) as 'exp slo',\n        ifnull(AVG(NULLIF(exp_debt ,0)),0) as 'exp debt',\n        max(latSlo) as 'lat slo',\n        ifnull(AVG(NULLIF(lat_debt ,0)),0) as 'lat debt'\nFROM HourlyJourney\nWHERE\n$__timeFilter(start)  and journey='$journey'\nGroup by feature",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "$journey detail",
-        "type": "table"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
+            "id": 4,
+            "options": {
+                "graph": {},
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom"
                 },
-                {
-                  "color": "#EAB839",
-                  "value": 0
+                "tooltipOptions": {
+                    "mode": "single"
                 }
-              ]
             },
-            "unit": "percentunit"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 9,
-          "x": 0,
-          "y": 26
-        },
-        "id": 20,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "center",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "text": {},
-          "textMode": "auto"
-        },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "$$hashKey": "object:566",
-            "aggregation": "Last",
-            "decimals": 2,
-            "displayAliasType": "Warning / Critical",
-            "displayType": "Regular",
-            "displayValueWithAlias": "Never",
-            "format": "table",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  ifnull(avg(nullif(ava_debt,0)),0)  as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start)   and journey = '$journey'\n",
-            "refId": "A",
-            "select": [
-              [
+            "pluginVersion": "7.5.1",
+            "targets": [
                 {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
+                    "format": "time_series",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  start AS \"time\",\n  feature,\n  avg(nullif(ava_debt, 0)) as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey'\ngroup by start, feature",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
                 }
-              ]
             ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "units": "none",
-            "valueHandler": "Number Threshold",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Availability Avg Debt",
-        "type": "stat"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Availability Debt",
+            "type": "timeseries"
+        },
+        {
+            "datasource": null,
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 10,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "graph": false,
+                            "legend": false,
+                            "tooltip": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "always",
+                        "spanNulls": true
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "short"
                 },
-                {
-                  "color": "#EAB839",
-                  "value": 0
-                }
-              ]
+                "overrides": []
             },
-            "unit": "percentunit"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 7,
-          "x": 9,
-          "y": 26
-        },
-        "id": 24,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "center",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "text": {},
-          "textMode": "auto"
-        },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "$$hashKey": "object:566",
-            "aggregation": "Last",
-            "decimals": 2,
-            "displayAliasType": "Warning / Critical",
-            "displayType": "Regular",
-            "displayValueWithAlias": "Never",
-            "format": "table",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  avg(exp_debt)  as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and exp_debt > 0  and journey = '$journey'\n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "units": "none",
-            "valueHandler": "Number Threshold",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Experience Avg Debt",
-        "type": "stat"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
+            "gridPos": {
+                "h": 7,
+                "w": 24,
+                "x": 0,
+                "y": 52
             },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
+            "id": 30,
+            "options": {
+                "graph": {},
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom"
                 },
-                {
-                  "color": "#EAB839",
-                  "value": 0
+                "tooltipOptions": {
+                    "mode": "single"
                 }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 8,
-          "x": 16,
-          "y": 26
-        },
-        "id": 25,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "center",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "text": {},
-          "textMode": "auto"
-        },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "$$hashKey": "object:566",
-            "aggregation": "Last",
-            "decimals": 2,
-            "displayAliasType": "Warning / Critical",
-            "displayType": "Regular",
-            "displayValueWithAlias": "Never",
-            "format": "table",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  avg(lat_debt) as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey' and lat_debt > 0\n",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "units": "none",
-            "valueHandler": "Number Threshold",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Latency Avg Debt",
-        "type": "stat"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-YlRd"
             },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
+            "pluginVersion": "7.5.1",
+            "targets": [
                 {
-                  "color": "green",
-                  "value": null
+                    "format": "time_series",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  start AS \"time\",\n  feature,\n  avg(nullif(exp_debt, 0)) as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey'\ngroup by start, feature",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
                 }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 9,
-          "x": 0,
-          "y": 29
-        },
-        "id": 27,
-        "options": {
-          "tiling": "treemapSquarify"
-        },
-        "pluginVersion": "7.5.2",
-        "targets": [
-          {
-            "format": "table",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  feature, \n  avg(ava_debt) as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey'\ngroup by feature",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
             ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Availability Debt Map",
-        "type": "marcusolsson-treemap-panel"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-YlRd"
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Experience Debt",
+            "type": "timeseries"
+        },
+        {
+            "datasource": null,
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 10,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "graph": false,
+                            "legend": false,
+                            "tooltip": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "always",
+                        "spanNulls": true
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "short"
+                },
+                "overrides": []
             },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 7,
-          "x": 9,
-          "y": 29
-        },
-        "id": 28,
-        "options": {
-          "tiling": "treemapSquarify"
-        },
-        "pluginVersion": "7.5.2",
-        "targets": [
-          {
-            "format": "table",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  feature, \n  avg(exp_debt) as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey'\ngroup by feature",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Experience Debt Map",
-        "type": "marcusolsson-treemap-panel"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-YlRd"
+            "gridPos": {
+                "h": 7,
+                "w": 24,
+                "x": 0,
+                "y": 59
             },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
+            "id": 31,
+            "options": {
+                "graph": {},
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom"
+                },
+                "tooltipOptions": {
+                    "mode": "single"
                 }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 8,
-          "x": 16,
-          "y": 29
-        },
-        "id": 29,
-        "options": {
-          "tiling": "treemapSquarify"
-        },
-        "pluginVersion": "7.5.2",
-        "targets": [
-          {
-            "format": "table",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  feature, \n  avg(lat_debt) as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey'\ngroup by feature",
-            "refId": "A",
-            "select": [
-              [
+            },
+            "pluginVersion": "7.5.1",
+            "targets": [
                 {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
+                    "format": "time_series",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  start AS \"time\",\n  feature,\n  avg(nullif(lat_debt, 0)) as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey'\ngroup by start, feature",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
                 }
-              ]
             ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Latency Debt Map",
-        "type": "marcusolsson-treemap-panel"
-      },
-      {
-        "aliasColors": {},
-        "bars": false,
-        "dashLength": 10,
-        "dashes": false,
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {},
-          "overrides": []
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Latency Debt",
+            "type": "timeseries"
         },
-        "fill": 1,
-        "fillGradient": 0,
-        "gridPos": {
-          "h": 8,
-          "w": 12,
-          "x": 0,
-          "y": 37
-        },
-        "hiddenSeries": false,
-        "id": 10,
-        "legend": {
-          "avg": false,
-          "current": false,
-          "max": false,
-          "min": false,
-          "show": true,
-          "total": false,
-          "values": false
-        },
-        "lines": true,
-        "linewidth": 1,
-        "nullPointMode": "null",
-        "options": {
-          "alertThreshold": true
-        },
-        "percentage": false,
-        "pluginVersion": "7.5.4",
-        "pointradius": 2,
-        "points": false,
-        "renderer": "flot",
-        "seriesOverrides": [],
-        "spaceLength": 10,
-        "stack": false,
-        "steppedLine": false,
-        "targets": [
-          {
-            "format": "time_series",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  start AS \"time\",\n  feature,\n  sum(total) as 'request'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey'\ngroup by feature, start\nORDER BY start",
-            "refId": "A",
-            "select": [
-              [
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "calculation": "mean",
+                        "colorPalette": "interpolateOranges",
+                        "colorSpace": "rgb",
+                        "groupBy": 60,
+                        "invertPalette": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 24,
+                "x": 0,
+                "y": 66
+            },
+            "id": 14,
+            "options": {
+                "from": "0",
+                "legendGradientQuality": "high",
+                "showCellBorder": false,
+                "showLegend": true,
+                "showTooltip": true,
+                "showValueIndicator": false,
+                "to": "0"
+            },
+            "pluginVersion": "7.5.2",
+            "targets": [
                 {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
+                    "format": "time_series",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  start AS \"time\",\n  ifnull(ava_debt,0)\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey' and ava_debt > 0\nORDER BY start",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "HourlySource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
                 }
-              ]
             ],
-            "table": "HourlySource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "thresholds": [],
-        "timeFrom": null,
-        "timeRegions": [],
-        "timeShift": null,
-        "title": "Requests",
-        "tooltip": {
-          "shared": true,
-          "sort": 0,
-          "value_type": "individual"
+            "title": "Hourly Availability Debt",
+            "type": "marcusolsson-hourly-heatmap-panel"
         },
-        "type": "graph",
-        "xaxis": {
-          "buckets": null,
-          "mode": "time",
-          "name": null,
-          "show": true,
-          "values": []
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "calculation": "mean",
+                        "colorPalette": "interpolateOranges",
+                        "colorSpace": "rgb",
+                        "groupBy": 60,
+                        "invertPalette": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 24,
+                "x": 0,
+                "y": 74
+            },
+            "id": 15,
+            "options": {
+                "from": "0",
+                "legendGradientQuality": "high",
+                "showCellBorder": false,
+                "showLegend": true,
+                "showTooltip": true,
+                "showValueIndicator": false,
+                "to": "0"
+            },
+            "pluginVersion": "7.5.1",
+            "targets": [
+                {
+                    "format": "time_series",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  start AS \"time\",\n  ifnull(exp_debt,0)\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey' and exp_debt > 0\nORDER BY start",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "HourlySource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Hourly Experience Debt",
+            "type": "marcusolsson-hourly-heatmap-panel"
         },
-        "yaxes": [
-          {
-            "$$hashKey": "object:706",
-            "format": "short",
-            "label": null,
-            "logBase": 1,
-            "max": null,
-            "min": null,
-            "show": true
-          },
-          {
-            "$$hashKey": "object:707",
-            "format": "short",
-            "label": null,
-            "logBase": 1,
-            "max": null,
-            "min": null,
-            "show": true
-          }
-        ],
-        "yaxis": {
-          "align": false,
-          "alignLevel": null
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "continuous-YlRd"
+                    },
+                    "custom": {
+                        "calculation": "mean",
+                        "colorPalette": "interpolateOranges",
+                        "colorSpace": "rgb",
+                        "groupBy": 60,
+                        "invertPalette": false
+                    },
+                    "mappings": [],
+                    "max": 0,
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 24,
+                "x": 0,
+                "y": 82
+            },
+            "id": 16,
+            "options": {
+                "from": "0",
+                "legendGradientQuality": "high",
+                "showCellBorder": false,
+                "showLegend": true,
+                "showTooltip": true,
+                "showValueIndicator": false,
+                "to": "0"
+            },
+            "pluginVersion": "7.5.1",
+            "targets": [
+                {
+                    "format": "time_series",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  start AS \"time\",\n  ifnull(lat_debt, 0)\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey' and lat_debt > 0\nORDER BY start",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "HourlySource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "title": "Latency Debt",
+            "type": "marcusolsson-hourly-heatmap-panel"
+        },
+        {
+            "datasource": "-- Grafana --",
+            "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 24,
+                "x": 0,
+                "y": 90
+            },
+            "id": 36,
+            "options": {
+                "content": "# Feature:  $feature \n\nReliability debt analysis for feature\n         ",
+                "mode": "markdown"
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
+                {
+                    "queryType": "randomWalk",
+                    "refId": "A"
+                }
+            ],
+            "type": "text"
+        },
+        {
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": null,
+                        "filterable": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "source"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 630
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "lat slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 136
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "exp debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 144
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "ava debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 122
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "exp slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 132
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "ava slo"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 134
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "lat debt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 124
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 9,
+                "w": 24,
+                "x": 0,
+                "y": 93
+            },
+            "id": 35,
+            "options": {
+                "showHeader": true,
+                "sortBy": [
+                    {
+                        "desc": true,
+                        "displayName": "exp debt"
+                    }
+                ]
+            },
+            "pluginVersion": "7.5.4",
+            "targets": [
+                {
+                    "format": "table",
+                    "group": [],
+                    "hide": false,
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "SELECT  source, \n        max(avaSlo) as 'ava slo',\n        ifnull(AVG(NULLIF(ava_debt ,0)),0) as 'ava debt',\n        max(expSlo) as 'exp slo',\n        ifnull(AVG(NULLIF(exp_debt ,0)),0) as 'exp debt',\n        max(latSlo) as 'lat slo',\n        ifnull(AVG(NULLIF(lat_debt ,0)),0) as 'lat debt'\nFROM HourlyJourney\nWHERE\n$__timeFilter(start) and feature = '$feature'\nGroup by source",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "index"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "table": "GraphFeatureSource",
+                    "timeColumn": "start",
+                    "timeColumnType": "timestamp",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Source List",
+            "type": "table"
         }
-      },
-      {
-        "aliasColors": {},
-        "bars": false,
-        "dashLength": 10,
-        "dashes": false,
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {},
-          "overrides": []
-        },
-        "fill": 1,
-        "fillGradient": 0,
-        "gridPos": {
-          "h": 8,
-          "w": 12,
-          "x": 12,
-          "y": 37
-        },
-        "hiddenSeries": false,
-        "id": 11,
-        "legend": {
-          "avg": false,
-          "current": false,
-          "max": false,
-          "min": false,
-          "show": true,
-          "total": false,
-          "values": false
-        },
-        "lines": true,
-        "linewidth": 1,
-        "nullPointMode": "null",
-        "options": {
-          "alertThreshold": true
-        },
-        "percentage": false,
-        "pluginVersion": "7.5.4",
-        "pointradius": 2,
-        "points": false,
-        "renderer": "flot",
-        "seriesOverrides": [],
-        "spaceLength": 10,
-        "stack": false,
-        "steppedLine": false,
-        "targets": [
-          {
-            "format": "time_series",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  start AS \"time\",\n  feature,\n  avg(lat) as 'latency ms'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey'\ngroup by start, feature\nORDER BY start",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "HourlySource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "thresholds": [],
-        "timeFrom": null,
-        "timeRegions": [],
-        "timeShift": null,
-        "title": "Latency",
-        "tooltip": {
-          "shared": true,
-          "sort": 0,
-          "value_type": "individual"
-        },
-        "type": "graph",
-        "xaxis": {
-          "buckets": null,
-          "mode": "time",
-          "name": null,
-          "show": true,
-          "values": []
-        },
-        "yaxes": [
-          {
-            "$$hashKey": "object:706",
-            "format": "short",
-            "label": null,
-            "logBase": 1,
-            "max": null,
-            "min": null,
-            "show": true
-          },
-          {
-            "$$hashKey": "object:707",
-            "format": "short",
-            "label": null,
-            "logBase": 1,
-            "max": null,
-            "min": null,
-            "show": true
-          }
-        ],
-        "yaxis": {
-          "align": false,
-          "alignLevel": null
-        }
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 10,
-              "gradientMode": "none",
-              "hideFrom": {
-                "graph": false,
-                "legend": false,
-                "tooltip": false
-              },
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "always",
-              "spanNulls": true
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "short"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 7,
-          "w": 24,
-          "x": 0,
-          "y": 45
-        },
-        "id": 4,
-        "options": {
-          "graph": {},
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom"
-          },
-          "tooltipOptions": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "7.5.1",
-        "targets": [
-          {
-            "format": "time_series",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  start AS \"time\",\n  feature,\n  avg(nullif(ava_debt, 0)) as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey'\ngroup by start, feature",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Availability Debt",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 10,
-              "gradientMode": "none",
-              "hideFrom": {
-                "graph": false,
-                "legend": false,
-                "tooltip": false
-              },
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "always",
-              "spanNulls": true
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "short"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 7,
-          "w": 24,
-          "x": 0,
-          "y": 52
-        },
-        "id": 30,
-        "options": {
-          "graph": {},
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom"
-          },
-          "tooltipOptions": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "7.5.1",
-        "targets": [
-          {
-            "format": "time_series",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  start AS \"time\",\n  feature,\n  avg(nullif(exp_debt, 0)) as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey'\ngroup by start, feature",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Experience Debt",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 10,
-              "gradientMode": "none",
-              "hideFrom": {
-                "graph": false,
-                "legend": false,
-                "tooltip": false
-              },
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "always",
-              "spanNulls": true
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "short"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 7,
-          "w": 24,
-          "x": 0,
-          "y": 59
-        },
-        "id": 31,
-        "options": {
-          "graph": {},
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom"
-          },
-          "tooltipOptions": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "7.5.1",
-        "targets": [
-          {
-            "format": "time_series",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  start AS \"time\",\n  feature,\n  avg(nullif(lat_debt, 0)) as 'debt'\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey'\ngroup by start, feature",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Latency Debt",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "custom": {
-              "calculation": "mean",
-              "colorPalette": "interpolateOranges",
-              "colorSpace": "rgb",
-              "groupBy": 60,
-              "invertPalette": false
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 24,
-          "x": 0,
-          "y": 66
-        },
-        "id": 14,
-        "options": {
-          "from": "0",
-          "legendGradientQuality": "high",
-          "showCellBorder": false,
-          "showLegend": true,
-          "showTooltip": true,
-          "showValueIndicator": false,
-          "to": "0"
-        },
-        "pluginVersion": "7.5.2",
-        "targets": [
-          {
-            "format": "time_series",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  start AS \"time\",\n  ifnull(ava_debt,0)\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey' and ava_debt > 0\nORDER BY start",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "HourlySource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Hourly Availability Debt",
-        "type": "marcusolsson-hourly-heatmap-panel"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "custom": {
-              "calculation": "mean",
-              "colorPalette": "interpolateOranges",
-              "colorSpace": "rgb",
-              "groupBy": 60,
-              "invertPalette": false
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 24,
-          "x": 0,
-          "y": 74
-        },
-        "id": 15,
-        "options": {
-          "from": "0",
-          "legendGradientQuality": "high",
-          "showCellBorder": false,
-          "showLegend": true,
-          "showTooltip": true,
-          "showValueIndicator": false,
-          "to": "0"
-        },
-        "pluginVersion": "7.5.1",
-        "targets": [
-          {
-            "format": "time_series",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  start AS \"time\",\n  ifnull(exp_debt,0)\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey' and exp_debt > 0\nORDER BY start",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "HourlySource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Hourly Experience Debt",
-        "type": "marcusolsson-hourly-heatmap-panel"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-YlRd"
-            },
-            "custom": {
-              "calculation": "mean",
-              "colorPalette": "interpolateOranges",
-              "colorSpace": "rgb",
-              "groupBy": 60,
-              "invertPalette": false
-            },
-            "mappings": [],
-            "max": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 24,
-          "x": 0,
-          "y": 82
-        },
-        "id": 16,
-        "options": {
-          "from": "0",
-          "legendGradientQuality": "high",
-          "showCellBorder": false,
-          "showLegend": true,
-          "showTooltip": true,
-          "showValueIndicator": false,
-          "to": "0"
-        },
-        "pluginVersion": "7.5.1",
-        "targets": [
-          {
-            "format": "time_series",
-            "group": [],
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT\n  start AS \"time\",\n  ifnull(lat_debt, 0)\nFROM HourlyJourney\nWHERE\n  $__timeFilter(start) and journey = '$journey' and lat_debt > 0\nORDER BY start",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "HourlySource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "title": "Latency Debt",
-        "type": "marcusolsson-hourly-heatmap-panel"
-      },
-      {
-        "datasource": "-- Grafana --",
-        "fieldConfig": {
-          "defaults": {},
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 24,
-          "x": 0,
-          "y": 90
-        },
-        "id": 36,
-        "options": {
-          "content": "# Feature:  $feature \n\nReliability debt analysis for feature\n         ",
-          "mode": "markdown"
-        },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "queryType": "randomWalk",
-            "refId": "A"
-          }
-        ],
-        "type": "text"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "custom": {
-              "align": null,
-              "filterable": false
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "source"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 630
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "lat slo"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 136
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "exp debt"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 144
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "ava debt"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 122
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "exp slo"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 132
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "ava slo"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 134
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "lat debt"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 124
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 24,
-          "x": 0,
-          "y": 93
-        },
-        "id": 35,
-        "options": {
-          "showHeader": true,
-          "sortBy": [
-            {
-              "desc": true,
-              "displayName": "exp debt"
-            }
-          ]
-        },
-        "pluginVersion": "7.5.4",
-        "targets": [
-          {
-            "format": "table",
-            "group": [],
-            "hide": false,
-            "metricColumn": "none",
-            "rawQuery": true,
-            "rawSql": "SELECT  source, \n        max(avaSlo) as 'ava slo',\n        ifnull(AVG(NULLIF(ava_debt ,0)),0) as 'ava debt',\n        max(expSlo) as 'exp slo',\n        ifnull(AVG(NULLIF(exp_debt ,0)),0) as 'exp debt',\n        max(latSlo) as 'lat slo',\n        ifnull(AVG(NULLIF(lat_debt ,0)),0) as 'lat debt'\nFROM HourlyJourney\nWHERE\n$__timeFilter(start) and feature = '$feature'\nGroup by source",
-            "refId": "A",
-            "select": [
-              [
-                {
-                  "params": [
-                    "index"
-                  ],
-                  "type": "column"
-                }
-              ]
-            ],
-            "table": "GraphFeatureSource",
-            "timeColumn": "start",
-            "timeColumnType": "timestamp",
-            "where": [
-              {
-                "name": "$__timeFilter",
-                "params": [],
-                "type": "macro"
-              }
-            ]
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Source List",
-        "type": "table"
-      }
     ],
     "refresh": false,
     "schemaVersion": 27,
     "style": "dark",
     "tags": [],
     "templating": {
-      "list": [
-        {
-          "current": {
-            "selected": false,
-            "text": "Loan Payment",
-            "value": "Loan Payment"
-          },
-          "description": null,
-          "error": null,
-          "hide": 0,
-          "label": null,
-          "name": "journey",
-          "options": [
+        "list": [
             {
-              "selected": true,
-              "text": "Loan Payment",
-              "value": "Loan Payment"
-            }
-          ],
-          "query": "Loan Payment",
-          "skipUrlSync": false,
-          "type": "textbox"
-        },
-        {
-          "current": {
-            "selected": false,
-            "text": "Dashboard",
-            "value": "Dashboard"
-          },
-          "description": null,
-          "error": null,
-          "hide": 0,
-          "label": null,
-          "name": "feature",
-          "options": [
+                "current": {
+                    "selected": false,
+                    "text": "Loan Payment",
+                    "value": "Loan Payment"
+                },
+                "description": null,
+                "error": null,
+                "hide": 0,
+                "label": null,
+                "name": "journey",
+                "options": [
+                    {
+                        "selected": true,
+                        "text": "Loan Payment",
+                        "value": "Loan Payment"
+                    }
+                ],
+                "query": "Loan Payment",
+                "skipUrlSync": false,
+                "type": "textbox"
+            },
             {
-              "selected": true,
-              "text": "Dashboard",
-              "value": "Dashboard"
+                "current": {
+                    "selected": false,
+                    "text": "Dashboard",
+                    "value": "Dashboard"
+                },
+                "description": null,
+                "error": null,
+                "hide": 0,
+                "label": null,
+                "name": "feature",
+                "options": [
+                    {
+                        "selected": true,
+                        "text": "Dashboard",
+                        "value": "Dashboard"
+                    }
+                ],
+                "query": "Dashboard",
+                "skipUrlSync": false,
+                "type": "textbox"
             }
-          ],
-          "query": "Dashboard",
-          "skipUrlSync": false,
-          "type": "textbox"
-        }
-      ]
+        ]
     },
     "time": {
-      "from": "now-7d",
-      "to": "now"
+        "from": "now-7d",
+        "to": "now"
     },
     "timepicker": {},
     "timezone": "",
     "title": "Journeys Details",
-    "uid": "FUkaW49Gz",
-    "version": 3
-  }
+    "version": 1
+}
